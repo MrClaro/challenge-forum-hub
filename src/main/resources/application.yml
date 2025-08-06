@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: forum-hub-api
+
+  datasource:
+    url: jdbc:mysql://${DB_HOST}:3310/${DB_NAME}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.MySQLoDialect
+      # ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true # faz a quebra de linha, deixa o sql formatado
+        show_sql: true # mostra sempre que houver uma consulta ao banco
+        use_sql_comments: true
+
+server:
+  port: 9090
+  error:
+    include-stacktrace: never
+    include-message: always
+
+api:
+  security:
+    token:
+      secret: ${JWT_SECRET:12345678}
