@@ -1,0 +1,15 @@
+CREATE TABLE topicos (
+    id CHAR(36) NOT NULL DEFAULT(UUID()),
+    titulo VARCHAR(255) NOT NULL,
+    mensagem TEXT,
+    status ENUM('ABERTO', 'FECHADO', 'RESOLVIDO') NOT NULL DEFAULT 'ABERTO',
+    autor_id CHAR(36) NOT NULL,
+    curso_id CHAR(36) NOT NULL,
+    ativo BOOLEAN NOT NULL DEFAULT TRUE,
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    data_exclusao TIMESTAMP NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (autor_id) REFERENCES usuarios(id),
+    FOREIGN KEY (curso_id) REFERENCES cursos(id)
+);
