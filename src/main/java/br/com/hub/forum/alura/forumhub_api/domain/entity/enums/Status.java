@@ -1,20 +1,22 @@
 package br.com.hub.forum.alura.forumhub_api.domain.entity.enums;
 
 public enum Status {
-  ABERTO,
-  RESOLVIDO,
-  FECHADO;
+  ABERTO("aberto"),
+  RESOLVIDO("resolvido"),
+  FECHADO("fechado");
 
-  public boolean isFechado() {
-    return this == FECHADO;
+  private final String valor;
+
+  Status(String valor) {
+    this.valor = valor;
   }
 
-  public boolean isResolvido() {
-    return this == RESOLVIDO;
+  public String getValor() {
+    return valor;
   }
 
-  public boolean isAberto() {
-    return this == ABERTO;
+  @Override
+  public String toString() {
+    return valor;
   }
-
 }

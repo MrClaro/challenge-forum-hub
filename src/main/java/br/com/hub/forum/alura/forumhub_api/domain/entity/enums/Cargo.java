@@ -4,13 +4,18 @@ public enum Cargo {
   ADMIN("admin"),
   USER("user");
 
-  private String cargo;
+  private final String valor;
 
-  Cargo(String cargo) {
-    this.cargo = cargo;
+  Cargo(String valor) {
+    this.valor = valor;
   }
 
-  public String obterCargo() {
-    return cargo;
+  public String getValor() {
+    return valor;
+  }
+
+  @Override
+  public String toString() {
+    return valor;
   }
 }
