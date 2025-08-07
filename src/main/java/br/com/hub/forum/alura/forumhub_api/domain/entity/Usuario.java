@@ -3,9 +3,12 @@ package br.com.hub.forum.alura.forumhub_api.domain.entity;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import br.com.hub.forum.alura.forumhub_api.domain.dto.usuario.DadosAtualizacaoUsuario;
 import br.com.hub.forum.alura.forumhub_api.domain.dto.usuario.DadosCadastroUsuario;
 import br.com.hub.forum.alura.forumhub_api.domain.entity.enums.Cargo;
 import jakarta.persistence.Column;
@@ -118,6 +121,28 @@ public class Usuario implements UserDetails {
 
   @Override
   public boolean isEnabled() {
-    return ativo != null && ativo;
+    return this.ativo;
+  }
+
+  public void atualizarDados(DadosAtualizacaoUsuario dados, String senhaHasheada) {
+    if (dados.nome() != null && !dados.nome().isBlank()) {
+      this.nome = dados.nome();
+    }
+
+    if (dados.email() != null && !dados.email().isBlank()) {
+      this.email = dados.email();
+    }
+
+    if (senhaHasheada != null) {
+      this.senha = senhaHasheada;
+    }
+
+    if (dados.cargo() != null) {
+      this.cargo = dados.cargo();
+    }
+
+    if (dados.ativo() != null) {
+      this.ativo = dados.ativo();
+    }
   }
 }
