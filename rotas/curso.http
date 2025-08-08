@@ -1,0 +1,57 @@
+### Criar um novo curso
+
+# @name criarCurso
+
+POST {{API_URL}}/cursos HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
+
+{
+  "categoria": "BACKEND",
+  "duracaoHoras": 30,
+  "instrutorId": "fea3e87b-b09a-4a4c-9ec2-9963d630a2a7",
+  "nome": "Curso de Teste 3"
+}
+
+
+### Listar cursos
+
+# @name listarCursos
+
+GET {{API_URL}}/cursos HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
+
+
+### Buscar curso por ID
+
+# @name buscarCursoPorId
+
+GET {{API_URL}}/cursos/8ba3bde9-59b2-49d3-a46e-0256c4d3ca1c HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
+
+
+### Atualizar curso
+
+# @name atualizarCurso
+
+PATCH {{API_URL}}/cursos/8ba3bde9-59b2-49d3-a46e-0256c4d3ca1c HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
+
+{
+  "categoria": "BACKEND",
+  "duracaoHoras": 40,
+  "instrutorId": "fea3e87b-b09a-4a4c-9ec2-9963d630a2a7",
+  "nome": "Curso de Teste 3 Atualizado"
+}
+
+
+### Deletar curso
+
+# @name deletarCurso
+
+DELETE {{API_URL}}/cursos/8ba3bde9-59b2-49d3-a46e-0256c4d3ca1c HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
