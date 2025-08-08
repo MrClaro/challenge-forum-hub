@@ -47,6 +47,11 @@ public class SecurityConfigurations {
       req.requestMatchers(HttpMethod.PUT, "/usuarios/**").hasRole("ADMIN");
       req.requestMatchers(HttpMethod.DELETE, "/usuarios/**").hasRole("ADMIN");
 
+      req.requestMatchers(HttpMethod.POST, "/cursos").hasRole("ADMIN");
+      req.requestMatchers(HttpMethod.GET, "/cursos/**").hasRole("ADMIN");
+      req.requestMatchers(HttpMethod.PUT, "/cursos/**").hasRole("ADMIN");
+      req.requestMatchers(HttpMethod.DELETE, "/cursos/**").hasRole("ADMIN");
+
       // Demais endpoints requerem autenticação
       req.anyRequest().authenticated();
     });
