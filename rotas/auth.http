@@ -1,0 +1,25 @@
+### Login
+
+# @name login
+
+POST {{API_URL}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "teste2@gmail.com",
+  "senha": "@Teste12345"
+}
+
+
+### Registrar novo usuário
+
+# @name registrar
+
+POST {{HOST}}/auth/registrar HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "teste3@gmail.com",
+  "nome": "Teste 2",
+  "senha": "@Teste12345"
+}
