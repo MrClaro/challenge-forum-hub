@@ -29,7 +29,8 @@ public class UsuarioController {
   private final UsuarioService usuarioService;
 
   @PostMapping
-  public ResponseEntity<DadosDetalhamentoUsuario> cadastrarUsuario(@RequestBody @Valid DadosCadastroUsuario dados,
+  public ResponseEntity<DadosDetalhamentoUsuario> cadastrarUsuario(
+      @RequestBody @Valid DadosCadastroUsuario dados,
       UriComponentsBuilder uriBuilder) {
     var usuarioCadastrado = usuarioService.cadastrarUsuario(dados);
     var uri = uriBuilder
@@ -49,7 +50,8 @@ public class UsuarioController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<DadosDetalhamentoUsuario> listarUsuarioPorId(@PathVariable String id) {
+  public ResponseEntity<DadosDetalhamentoUsuario> listarUsuarioPorId(
+      @PathVariable String id) {
     var usuario = usuarioService.obterPorId(id);
     return ResponseEntity.ok(usuario);
   }
@@ -64,7 +66,8 @@ public class UsuarioController {
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<Void> deletarUsuario(@PathVariable String id) {
+  public ResponseEntity<Void> deletarUsuario(
+      @PathVariable String id) {
     usuarioService.deletarUsuario(id);
     return ResponseEntity.noContent().build();
   }
