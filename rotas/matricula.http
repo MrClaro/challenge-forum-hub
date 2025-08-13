@@ -1,0 +1,52 @@
+### Criar uma nova matricula
+
+# @name criarMatricula
+
+POST {{API_URL}}/matriculas HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
+
+{
+  "alunoId": "fea3e87b-b09a-4a4c-9ec2-9963d630a2a7",
+  "cursoId": "6216e8a4-427d-4378-8cf7-4eee51e7341e"
+}
+
+
+### Listar matriculas
+
+# @name listarMatriculas
+
+GET {{API_URL}}/matriculas HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
+
+
+### Buscar matricula por ID
+
+# @name buscarMatriculaPorId
+
+GET {{API_URL}}/matriculas/ce43c412-43cd-4f41-ad02-4cfecc03b166 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
+
+
+### Atualizar matricula
+
+# @name atualizarMatricula
+
+PATCH {{API_URL}}/matriculas/ce43c412-43cd-4f41-ad02-4cfecc03b166 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
+
+{
+  "progresso": 100
+}
+
+
+### Deletar matricula
+
+# @name deletarMatricula
+
+DELETE {{API_URL}}/matriculas/8ba3bde9-59b2-49d3-a46e-0256c4d3ca1c HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
