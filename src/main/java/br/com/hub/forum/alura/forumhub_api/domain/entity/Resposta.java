@@ -2,6 +2,8 @@ package br.com.hub.forum.alura.forumhub_api.domain.entity;
 
 import java.time.LocalDateTime;
 
+import br.com.hub.forum.alura.forumhub_api.domain.dto.resposta.DadosCadastroResposta;
+import br.com.hub.forum.alura.forumhub_api.infra.exception.resposta.DadosAtualizacaoResposta;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,7 +41,7 @@ public class Resposta {
   @JoinColumn(name = "autor_id")
   private Usuario autor;
 
-  private String solucao;
+  private Boolean solucao;
 
   private Boolean ativo;
 
@@ -61,6 +63,33 @@ public class Resposta {
   @PreUpdate
   protected void onUpdate() {
     dataAtualizacao = LocalDateTime.now();
+  }
+
+  public void desativar() {
+    this.ativo = false;
+    this.dataExclusao = LocalDateTime.now();
+  }
+
+  public void reativar() {
+    this.ativo = true;
+    this.dataExclusao = null;
+  }
+
+  public Resposta(String mensagem, Topico topico, Usuario usuario) {
+    this.mensagem = mensagem;
+    this.topico = topico;
+    this.autor = usuario;
+    this.ativo = true;
+    this.solucao = false;
+  }
+
+  public void atualizar(DadosAtualizacaoResposta dados) {
+    if (dados.mensagem() != null) {
+      this.mensagem = dados.mensagem();
+    }
+    if (dados.solucao() != null) {
+      this.solucao = dados.solucao();
+    }
   }
 
 }
