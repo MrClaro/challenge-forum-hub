@@ -12,6 +12,7 @@ import br.com.hub.forum.alura.forumhub_api.domain.entity.Curso;
 import br.com.hub.forum.alura.forumhub_api.infra.exception.curso.CursoInativoException;
 import br.com.hub.forum.alura.forumhub_api.infra.exception.curso.CursoJaExisteException;
 import br.com.hub.forum.alura.forumhub_api.infra.exception.curso.CursoNotFoundException;
+import br.com.hub.forum.alura.forumhub_api.infra.exception.usuario.UsuarioInativoException;
 import br.com.hub.forum.alura.forumhub_api.infra.exception.usuario.UsuarioNotFoundException;
 import br.com.hub.forum.alura.forumhub_api.repositories.CursoRepository;
 import br.com.hub.forum.alura.forumhub_api.repositories.UsuarioRepository;
@@ -69,6 +70,9 @@ public class CursoService {
 
     var usuario = usuarioRepository.findById(dados.instrutorId())
         .orElseThrow(() -> new UsuarioNotFoundException("Usuário não encontrado: " + dados.instrutorId()));
+    if (!usuario.getAtivo()) {
+      throw new UsuarioInativoException("Usuário inativo: " + dados.instrutorId());
+    }
 
     curso.atualizarDados(dados, usuario);
     return new DadosDetalhamentoCurso(curso);
@@ -78,7 +82,7 @@ public class CursoService {
   public void excluirCurso(String id) {
     var curso = cursoRepository.findById(id)
         .orElseThrow(() -> new CursoNotFoundException("Curso não encontrado com o ID: " + id));
-    if (curso.getAtivo() == false) {
+    if (!curso.getAtivo()) {
       throw new CursoInativoException("Curso já está inativo: " + id);
     }
     curso.desativar();
