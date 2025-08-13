@@ -3,6 +3,8 @@ package br.com.hub.forum.alura.forumhub_api.domain.entity;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import br.com.hub.forum.alura.forumhub_api.domain.dto.topico.DadosAtualizacaoTopico;
+import br.com.hub.forum.alura.forumhub_api.domain.dto.topico.DadosCadastroTopico;
 import br.com.hub.forum.alura.forumhub_api.domain.entity.enums.Status;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -73,6 +75,40 @@ public class Topico {
   @PreUpdate
   protected void onUpdate() {
     dataAtualizacao = LocalDateTime.now();
+  }
+
+  public void desativar() {
+    this.ativo = false;
+    this.dataExclusao = LocalDateTime.now();
+  }
+
+  public void reativar() {
+    this.ativo = true;
+    this.dataExclusao = null;
+  }
+
+  public Topico(DadosCadastroTopico dados, Usuario autor, Curso curso) {
+    this.titulo = dados.titulo();
+    this.mensagem = dados.mensagem();
+    this.status = Status.NAO_RESPONDIDO;
+    this.ativo = true;
+    this.autor = autor;
+    this.curso = curso;
+  }
+
+  public void atualizar(DadosAtualizacaoTopico dados) {
+    if (dados.titulo() != null) {
+      this.titulo = dados.titulo();
+    }
+    if (dados.mensagem() != null) {
+      this.mensagem = dados.mensagem();
+    }
+    if (dados.status() != null) {
+      this.status = dados.status();
+    }
+    if (dados.ativo() != null) {
+      this.ativo = dados.ativo();
+    }
   }
 
 }
