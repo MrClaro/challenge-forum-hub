@@ -1,6 +1,6 @@
 # 🏆 Challenge Forum Hub - Oracle Next Education (ONE)
 
-Bem-vindo ao **Challenge Forum Hub**! Este projeto faz parte do programa Oracle Next Education (ONE), onde o desafio consistiu em construir uma API REST completa de fórum, com funcionalidades de tópicos, respostas, cursos, matrículas e usuários, utilizando o ecossistema Spring Boot moderno e boas práticas de arquitetura Java.
+Bem-vindo ao **Challenge Forum Hub**! Este projeto faz parte do programa Oracle Next Education (ONE) se tratando do ultímo challenge proposto, onde o desafio consistiu em construir uma API REST completa de fórum, com funcionalidades de tópicos, respostas, cursos, matrículas e usuários, utilizando o ecossistema Spring Boot moderno e boas práticas de arquitetura Java.
 
 ---
 
