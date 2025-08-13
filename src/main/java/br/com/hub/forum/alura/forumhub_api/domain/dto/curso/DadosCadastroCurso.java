@@ -1,5 +1,7 @@
 package br.com.hub.forum.alura.forumhub_api.domain.dto.curso;
 
+import org.hibernate.validator.constraints.UUID;
+
 import br.com.hub.forum.alura.forumhub_api.domain.entity.enums.Categoria;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -12,7 +14,7 @@ public record DadosCadastroCurso(
 
     @NotNull(message = "A categoria do curso é obrigatória") Categoria categoria,
 
-    @NotBlank(message = "O ID do instrutor é obrigatório") String instrutorId,
+    @NotBlank(message = "O ID do instrutor é obrigatório") @UUID(message = "O ID do instrutor deve ser um UUID") String instrutorId,
 
     @NotNull(message = "A duração do curso é obrigatória") @Min(value = 1, message = "A duração deve ser pelo menos 1 hora") @Max(value = 1000, message = "A duração não pode exceder 1000 horas") Integer duracaoHoras) {
 }
