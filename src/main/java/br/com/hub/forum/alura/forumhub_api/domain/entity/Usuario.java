@@ -74,6 +74,28 @@ public class Usuario implements UserDetails {
     this.cargo = dados.cargo() != null ? dados.cargo() : Cargo.USER;
   }
 
+  public void atualizarDados(DadosAtualizacaoUsuario dados, String senhaHasheada) {
+    if (dados.nome() != null && !dados.nome().isBlank()) {
+      this.nome = dados.nome();
+    }
+
+    if (dados.email() != null && !dados.email().isBlank()) {
+      this.email = dados.email();
+    }
+
+    if (senhaHasheada != null) {
+      this.senha = senhaHasheada;
+    }
+
+    if (dados.cargo() != null) {
+      this.cargo = dados.cargo();
+    }
+
+    if (dados.ativo() != null) {
+      this.ativo = dados.ativo();
+    }
+  }
+
   public void desativar() {
     this.ativo = false;
     this.dataExclusao = LocalDateTime.now();
@@ -124,25 +146,4 @@ public class Usuario implements UserDetails {
     return this.ativo;
   }
 
-  public void atualizarDados(DadosAtualizacaoUsuario dados, String senhaHasheada) {
-    if (dados.nome() != null && !dados.nome().isBlank()) {
-      this.nome = dados.nome();
-    }
-
-    if (dados.email() != null && !dados.email().isBlank()) {
-      this.email = dados.email();
-    }
-
-    if (senhaHasheada != null) {
-      this.senha = senhaHasheada;
-    }
-
-    if (dados.cargo() != null) {
-      this.cargo = dados.cargo();
-    }
-
-    if (dados.ativo() != null) {
-      this.ativo = dados.ativo();
-    }
-  }
 }
