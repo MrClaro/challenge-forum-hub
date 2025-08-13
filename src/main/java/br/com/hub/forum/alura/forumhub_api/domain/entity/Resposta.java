@@ -2,8 +2,7 @@ package br.com.hub.forum.alura.forumhub_api.domain.entity;
 
 import java.time.LocalDateTime;
 
-import br.com.hub.forum.alura.forumhub_api.domain.dto.resposta.DadosCadastroResposta;
-import br.com.hub.forum.alura.forumhub_api.infra.exception.resposta.DadosAtualizacaoResposta;
+import br.com.hub.forum.alura.forumhub_api.domain.dto.resposta.DadosAtualizacaoResposta;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
