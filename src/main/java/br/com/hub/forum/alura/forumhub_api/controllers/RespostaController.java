@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import br.com.hub.forum.alura.forumhub_api.domain.dto.resposta.DadosAtualizacaoResposta;
 import br.com.hub.forum.alura.forumhub_api.domain.dto.resposta.DadosCadastroResposta;
 import br.com.hub.forum.alura.forumhub_api.domain.dto.resposta.DadosDetalhamentoResposta;
-import br.com.hub.forum.alura.forumhub_api.infra.exception.resposta.DadosAtualizacaoResposta;
 import br.com.hub.forum.alura.forumhub_api.services.RespostaService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
