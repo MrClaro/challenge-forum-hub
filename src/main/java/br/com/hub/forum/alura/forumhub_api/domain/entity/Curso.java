@@ -52,9 +52,6 @@ public class Curso {
   @JoinColumn(name = "instrutor_id")
   private Usuario instrutor;
 
-  @OneToMany(mappedBy = "curso")
-  private List<Matricula> matriculas;
-
   @OneToMany(mappedBy = "curso", fetch = FetchType.LAZY)
   private List<Topico> topicos;
 
