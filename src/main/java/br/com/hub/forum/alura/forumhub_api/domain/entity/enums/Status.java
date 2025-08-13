@@ -3,6 +3,7 @@ package br.com.hub.forum.alura.forumhub_api.domain.entity.enums;
 public enum Status {
   ABERTO("aberto"),
   RESOLVIDO("resolvido"),
+  NAO_RESPONDIDO("não respondido"),
   FECHADO("fechado");
 
   private final String valor;
