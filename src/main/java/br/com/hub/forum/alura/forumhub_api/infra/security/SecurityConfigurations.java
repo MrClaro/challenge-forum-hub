@@ -52,6 +52,21 @@ public class SecurityConfigurations {
       req.requestMatchers(HttpMethod.PUT, "/cursos/**").hasRole("ADMIN");
       req.requestMatchers(HttpMethod.DELETE, "/cursos/**").hasRole("ADMIN");
 
+      req.requestMatchers(HttpMethod.POST, "/matriculas").hasRole("ADMIN");
+      req.requestMatchers(HttpMethod.GET, "/matriculas/**").hasRole("ADMIN");
+      req.requestMatchers(HttpMethod.PUT, "/matriculas/**").hasRole("ADMIN");
+      req.requestMatchers(HttpMethod.DELETE, "/matriculas/**").hasRole("ADMIN");
+
+      req.requestMatchers(HttpMethod.POST, "/topicos").hasRole("ADMIN");
+      req.requestMatchers(HttpMethod.GET, "/topicos/**").hasRole("ADMIN");
+      req.requestMatchers(HttpMethod.PUT, "/topicos/**").hasRole("ADMIN");
+      req.requestMatchers(HttpMethod.DELETE, "/topicos/**").hasRole("ADMIN");
+
+      req.requestMatchers(HttpMethod.POST, "/respostas").hasRole("ADMIN");
+      req.requestMatchers(HttpMethod.GET, "/respostas/**").hasRole("ADMIN");
+      req.requestMatchers(HttpMethod.PUT, "/respostas/**").hasRole("ADMIN");
+      req.requestMatchers(HttpMethod.DELETE, "/respostas/**").hasRole("ADMIN");
+
       // Demais endpoints requerem autenticação
       req.anyRequest().authenticated();
     });
