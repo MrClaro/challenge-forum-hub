@@ -1,0 +1,53 @@
+### Criar uma nova topico
+
+# @name criarResposta
+
+POST {{API_URL}}/respostas HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
+
+{
+  "autorId": "fea3e87b-b09a-4a4c-9ec2-9963d630a2a7",
+  "mensagem": "Cara, tenta colocar console.log()",
+  "topicoId": "02334bb6-69ae-46ee-927e-d8da157a5b94"
+}
+
+
+### Listar respostas
+
+# @name listarRespostas
+
+GET {{API_URL}}/respostas HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
+
+
+### Buscar resposta por ID
+
+# @name buscarRespostaPorId
+
+GET {{API_URL}}/respostas/7ac94d93-57ce-41ea-afc8-015dd65afcb1 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
+
+
+### Atualizar resposta
+
+# @name atualizarResposta
+
+PATCH {{API_URL}}/respostas/7ac94d93-57ce-41ea-afc8-015dd65afcb1 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
+
+{
+  "mensagem": "Cara, tenta colocar console.log() atualizado"
+}
+
+
+### Deletar resposta
+
+# @name deletarResposta
+
+DELETE {{API_URL}}/respostas/7ac94d93-57ce-41ea-afc8-015dd65afcb1 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
