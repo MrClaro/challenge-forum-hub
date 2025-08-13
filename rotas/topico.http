@@ -1,0 +1,56 @@
+### Criar uma nova topico
+
+# @name criarTopico
+
+POST {{API_URL}}/topicos HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
+
+{
+  "autorId": "fea3e87b-b09a-4a4c-9ec2-9963d630a2a7",
+  "cursoId": "6216e8a4-427d-4378-8cf7-4eee51e7341e",
+  "mensagem": "Deu pau aqui nesse código, alguém pode me ajudar?",
+  "titulo": "Introdução ao JavaScript"
+}
+
+
+### Listar topicos
+
+# @name listarTopicos
+
+GET {{API_URL}}/topicos HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
+
+
+### Buscar topico por ID
+
+# @name buscarTopicoPorId
+
+GET {{API_URL}}/topicos/a655deac-e43d-42e3-a4cb-ba6fdde4032d HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
+
+
+### Atualizar topico
+
+# @name atualizarTopico
+
+PATCH {{API_URL}}/topicos/a655deac-e43d-42e3-a4cb-ba6fdde4032d HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
+
+{
+  "mensagem": "Deu pau aqui nesse código, alguém pode me ajudar? Atualizado",
+  "status": "RESOLVIDO",
+  "titulo": "Erro de console.log()"
+}
+
+
+### Deletar topico
+
+# @name deletarTopico
+
+DELETE {{API_URL}}/topicos/a655deac-e43d-42e3-a4cb-ba6fdde4032d HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
