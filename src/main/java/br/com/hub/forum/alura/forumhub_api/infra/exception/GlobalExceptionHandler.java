@@ -13,6 +13,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import br.com.hub.forum.alura.forumhub_api.infra.exception.curso.CursoInativoException;
 import br.com.hub.forum.alura.forumhub_api.infra.exception.curso.CursoJaExisteException;
 import br.com.hub.forum.alura.forumhub_api.infra.exception.curso.CursoNotFoundException;
+import br.com.hub.forum.alura.forumhub_api.infra.exception.matricula.MatriculaCanceladaException;
+import br.com.hub.forum.alura.forumhub_api.infra.exception.matricula.MatriculaJaExisteException;
+import br.com.hub.forum.alura.forumhub_api.infra.exception.matricula.MatriculaNotFoundException;
+import br.com.hub.forum.alura.forumhub_api.infra.exception.resposta.RespostaInativaException;
+import br.com.hub.forum.alura.forumhub_api.infra.exception.resposta.RespostaNotFoundException;
+import br.com.hub.forum.alura.forumhub_api.infra.exception.topico.TopicoInativoException;
+import br.com.hub.forum.alura.forumhub_api.infra.exception.topico.TopicoNotFoundException;
 import br.com.hub.forum.alura.forumhub_api.infra.exception.usuario.EmailJaCadastradoException;
 import br.com.hub.forum.alura.forumhub_api.infra.exception.usuario.UsuarioInativoException;
 import br.com.hub.forum.alura.forumhub_api.infra.exception.usuario.UsuarioNotFoundException;
@@ -85,6 +92,65 @@ public class GlobalExceptionHandler {
   public ResponseEntity<ErrorResponse> handleCursoInativo(CursoInativoException ex) {
     log.warn("Curso inativo: {}", ex.getMessage());
     var error = new ErrorResponse("Curso inativo", ex.getMessage());
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+  }
+  // =====================================================
+  // EXCEÇÕES DE MATRÍCULA
+  // ====================================================
+
+  @ExceptionHandler(MatriculaNotFoundException.class)
+  public ResponseEntity<ErrorResponse> handleMatriculaNotFound(MatriculaNotFoundException ex) {
+    log.warn("Matrícula não encontrada: {}", ex.getMessage());
+    var error = new ErrorResponse("Matrícula não encontrada", ex.getMessage());
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+  }
+
+  @ExceptionHandler(MatriculaCanceladaException.class)
+  public ResponseEntity<ErrorResponse> handleMatriculaInativa(MatriculaCanceladaException ex) {
+    log.warn("Matrícula cancelada: {}", ex.getMessage());
+    var error = new ErrorResponse("Matrícula cancelada", ex.getMessage());
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+  }
+
+  @ExceptionHandler(MatriculaJaExisteException.class)
+  public ResponseEntity<ErrorResponse> handleMatriculaJaExiste(MatriculaJaExisteException ex) {
+    log.warn("Matrícula já existe: {}", ex.getMessage());
+    var error = new ErrorResponse("Matrícula já existe", ex.getMessage());
+    return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
+  }
+
+  // =====================================================
+  // EXCEÇÕES DE TÓPICOS
+  // ====================================================
+
+  @ExceptionHandler(TopicoNotFoundException.class)
+  public ResponseEntity<ErrorResponse> handleTopicoNotFound(TopicoNotFoundException ex) {
+    log.warn("Tópico não encontrado: {}", ex.getMessage());
+    var error = new ErrorResponse("Tópico não encontrado", ex.getMessage());
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+  }
+
+  @ExceptionHandler(TopicoInativoException.class)
+  public ResponseEntity<ErrorResponse> handleTopicoInativo(TopicoInativoException ex) {
+    log.warn("Tópico com curso inativo: {}", ex.getMessage());
+    var error = new ErrorResponse("Tópico Inativo", ex.getMessage());
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+  }
+
+  // =====================================================
+  // EXCEÇÕES DE RESPOSTA
+  // ====================================================
+  @ExceptionHandler(RespostaNotFoundException.class)
+  public ResponseEntity<ErrorResponse> handleRespostaNotFound(RespostaNotFoundException ex) {
+    log.warn("Resposta não encontrada: {}", ex.getMessage());
+    var error = new ErrorResponse("Resposta não encontrada", ex.getMessage());
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+  }
+
+  @ExceptionHandler(RespostaInativaException.class)
+  public ResponseEntity<ErrorResponse> handleRespostaInativa(RespostaInativaException ex) {
+    log.warn("Resposta inativa: {}", ex.getMessage());
+    var error = new ErrorResponse("Resposta inativa", ex.getMessage());
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
   }
 
